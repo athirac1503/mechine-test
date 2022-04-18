@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+<style>
+    body{
+        background-color: pink;
+        margin: 0;
+    }
+    h1{
+        text-align: center;
+        margin-top: 30px;
+        
+    }
+    .box{
+        background-color: rgba(245, 192, 220, 0.607);
+        width: 400px;
+        height: 100px;
+        border-radius: 10px;
+        margin-left: 470px;
+        margin-top: 50px;
+    }
+    .input1{
+        width: 250px;
+        margin-top: 30px;
+        margin-left: 20px;
+        border-radius: 5px;
+        border: solid 2px rgb(227, 55, 158);
+    }
+    .input1:hover{
+        border: solid 2px rgb(227, 55, 158);
+    }
+    .btn1{
+        width: 100px;
+        background-color: rgb(186, 7, 102);
+        height: 30px;
+        border: solid 2px rgb(186, 7, 102);
+        border-radius: 5px;
+    }
+    #tasks{
+    border-radius: 10px;
+    width: 700px;
+    position: relative;
+    background-color: pink;
+    padding: 30px 20px;
+    margin-top: 10px;
+    margin-left: 300px;
+}
+
+.task{
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #8d0863;
+    cursor: pointer;
+    background-color: rgba(255, 192, 203, 0.008);
+    margin-top: 40px;
+    height: 50px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    display: flex;
+}
+.task span{
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+.task button{
+    background-color: rgb(186, 7, 102);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    height: 100%;
+    width: 70px;
+    border-radius: 5px;
+}
+.task button{
+    background-color: rgb(186, 7, 102);
+    color: rgba(245, 192, 220, 0.607);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    height: 100%;
+    width: 70px;
+    border-radius: 5px;
+}
+
+</style>
+    
+</head>
+<body>
+    <h1><i>To Do List</i></h1>
+    <div class="box  shadow" id="newtask">
+        <input class="input1" type="text" placeholder="Task to be done">
+        <button class="btn1" id="push">Add</button>
+
+    </div>
+    <div class="tasks " id="tasks">
+        
+
+    </div>
+
+
+    <script>
+    document.querySelector('#push').onclick = function(){
+    if(document.querySelector('#newtask input').value.length == 0){
+        alert("Please Enter a Task")
+    }
+
+    else{
+        document.querySelector('#tasks').innerHTML += `
+            <div class="task">
+                <span id="taskname">
+                    ${document.querySelector('#newtask input').value}
+                </span>
+                <button class="delete">
+                    <i>delete</i>
+                </button>
+            </div>
+        `;
+
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+    }
+}
+    </script>
+</body>
+</html>
